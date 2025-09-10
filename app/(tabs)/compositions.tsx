@@ -83,7 +83,7 @@ export default function CompositionsScreen() {
     <View style={styles.compositionCard}>
       <View style={styles.cardHeader}>
         <View style={styles.cardTitleContainer}>
-          <Music size={20} color="#FF6B35" strokeWidth={2} />
+          <Music size={20} color="#4CAF50" strokeWidth={2} />
           <Text style={styles.compositionTitle}>{item.name}</Text>
         </View>
         <View style={styles.cardActions}>
@@ -91,7 +91,7 @@ export default function CompositionsScreen() {
             style={styles.actionButton}
             onPress={() => router.push(`/edit/${item.id}`)}
           >
-            <Edit3 size={18} color="#F7931E" strokeWidth={2} />
+            <Edit3 size={18} color="#2E7D32" strokeWidth={2} />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.actionButton}
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     color: '#2D3436',
   },
   createButton: {
-    backgroundColor: '#FF6B35',
+    backgroundColor: '#4CAF50',
     width: 48,
     height: 48,
     borderRadius: 24,
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   openButton: {
-    backgroundColor: '#F7931E',
+    backgroundColor: '#2E7D32',
     paddingVertical: 10,
     borderRadius: 8,
     alignItems: 'center',

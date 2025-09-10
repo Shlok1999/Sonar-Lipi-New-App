@@ -127,17 +127,25 @@ export default function EditCompositionScreen() {
 
     const columns = taalInfo.numberOfColumns;
     let tableRows = '';
+
+    // Calculate vibhag boundaries
+    const vibhagBoundaries = new Set();
+    let columnCount = 0;
+    taalInfo.structure.forEach(count => {
+      columnCount += count;
+      vibhagBoundaries.add(columnCount);
+    });
     
     // Header row
-    tableRows += '<tr><th style="background-color: #f5f5f5; padding: 12px; border-bottom: 1px solid #ddd; font-weight: bold;">#</th>';
+    tableRows += '<tr><th style="background-color: #f5f5f5; padding: 12px; border-bottom: 1px solid #ddd; border-right: 1px solid #000000; font-weight: bold;">#</th>';
     for (let i = 1; i <= columns; i++) {
-      const hasBorder = getBorderStyle(i - 1).borderRightWidth === 2;
+      const isVibhagBoundary = vibhagBoundaries.has(i);
       tableRows += `<th style="
         background-color: #f5f5f5;
         padding: 12px;
         border-bottom: 1px solid #ddd;
         font-weight: bold;
-        ${hasBorder ? 'border-right: 2px solid #FF6B35;' : ''}
+        ${isVibhagBoundary ? 'border-right: 1px solid #000000;' : ''}
       ">${i}</th>`;
     }
     tableRows += '</tr>';
@@ -150,17 +158,19 @@ export default function EditCompositionScreen() {
         border-bottom: 1px solid #ddd;
         font-weight: bold;
         text-align: center;
-        border-right: 1px solid #ddd;
+        border-right: 1px solid #000000;
       ">${row + 1}</td>`;
       for (let col = 0; col < columns; col++) {
         const cellValue = grid[row] && grid[row][col] ? grid[row][col] : '';
-        const hasBorder = getBorderStyle(col).borderRightWidth === 2;
+        const isVibhagBoundary = vibhagBoundaries.has(col + 1);
         tableRows += `<td style="
           padding: 12px;
-          ${hasBorder ? 'border-right: 2px solid #FF6B35;' : ''}
           border-bottom: 1px solid #E0E0E0;
           min-height: 40px;
           width: 150px;
+          border: none;
+          ${isVibhagBoundary ? 'border-right: 1px solid #000000;' : ''}
+          border-bottom: 1px solid #E0E0E0;
         ">${cellValue}</td>`;
       }
       tableRows += '</tr>';
@@ -177,8 +187,17 @@ export default function EditCompositionScreen() {
             .header { text-align: center; margin-bottom: 30px; }
             .composition-title { font-size: 24px; font-weight: bold; color: #2D3436; margin-bottom: 10px; }
             .taal-info { font-size: 18px; color: #636E72; }
-            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-            th, td { border: 1px solid #ddd; text-align: center; }
+            table { 
+              width: 100%; 
+              border-collapse: collapse; 
+              margin-top: 20px;
+              border: 1px solid #000000;
+            }
+            th, td { 
+              border: none;
+              border-bottom: 1px solid #ddd; 
+              text-align: center; 
+            }
           </style>
         </head>
         <body>
@@ -212,8 +231,8 @@ export default function EditCompositionScreen() {
       cumulativeBeats += taalInfo.structure[i];
       if (colIndex + 1 === cumulativeBeats && colIndex + 1 < taalInfo.numberOfColumns) {
         return {
-          borderRightWidth: 2,
-          borderRightColor: '#FF6B35',
+          borderRightWidth: 1,
+          borderRightColor: '#000000',
         };
       }
     }
@@ -489,7 +508,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     paddingTop: 50,
-    backgroundColor: '#FF6B35',
+    backgroundColor: '#4CAF50',
   },
   backButton: {
     padding: 8,
@@ -543,51 +562,51 @@ const styles = StyleSheet.create({
     borderBottomColor: '#E0E0E0',
   },
   gridCell: {
-    minHeight: 60,
-    width: 120,
+    minHeight: 45,
+    width: 90,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
-    paddingHorizontal: 4,
+    paddingHorizontal: 2,
   },
   headerCell: {
     backgroundColor: '#F5F5F5',
-    minHeight: 45,
-    paddingHorizontal: 8,
+    minHeight: 35,
+    paddingHorizontal: 4,
   },
   rowNumberCell: {
     backgroundColor: '#F9F9F9',
-    width: 50,
-    minWidth: 50,
-    maxWidth: 50,
+    width: 35,
+    minWidth: 35,
+    maxWidth: 35,
     position: 'sticky',
     left: 0,
     zIndex: 1,
-    borderRightWidth: 2,
-    borderRightColor: '#E0E0E0',
+    borderRightWidth: 1,
+    borderRightColor: '#000000',
   },
   headerText: {
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: 12,
     color: '#2D3436',
     textAlign: 'center',
   },
   rowNumberText: {
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: 12,
     color: '#2D3436',
     textAlign: 'center',
   },
   cellInput: {
     flex: 1,
     width: '100%',
-    paddingHorizontal: 4,
-    paddingVertical: 4,
-    fontSize: 14,
+    paddingHorizontal: 2,
+    paddingVertical: 2,
+    fontSize: 13,
     color: '#2D3436',
     textAlign: 'center',
-    minHeight: 60,
-    maxHeight: 80,
+    minHeight: 45,
+    maxHeight: 45,
   },
   modalOverlay: {
     flex: 1,

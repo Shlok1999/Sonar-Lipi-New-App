@@ -227,7 +227,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FF6B35',
+    backgroundColor: '#4CAF50',
     paddingVertical: 16,
     borderRadius: 8,
     marginTop: 20,
@@ -269,7 +269,7 @@ const styles = StyleSheet.create({
   },
   modalCloseText: {
     fontSize: 16,
-    color: '#FF6B35',
+    color: '#4CAF50',
     fontWeight: '600',
   },
   taalList: {
@@ -298,6 +298,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   selectedTaalOptionText: {
-    color: '#FF6B35',
+    color: '#4CAF50',
   },
 });

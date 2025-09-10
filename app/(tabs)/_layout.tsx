@@ -17,7 +17,7 @@ export default function TabLayout() {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: '#FFFFFF',
-          borderTopColor: '#F7931E',
+          borderTopColor: '#4CAF50',  // Material Green
           borderTopWidth: 1,
           elevation: 8,
           shadowColor: '#000',
@@ -27,10 +27,10 @@ export default function TabLayout() {
           height: 60,
           paddingBottom: 8,
           paddingTop: 4,
-          marginBottom: 20, // Add margin to lift tab bar up
+          marginBottom: 0,
         },
-        tabBarActiveTintColor: '#FF6B35',
-        tabBarInactiveTintColor: '#8B4513',
+        tabBarActiveTintColor: '#2E7D32',  // Dark Green
+        tabBarInactiveTintColor: '#A5D6A7',  // Light Green
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: '600',
