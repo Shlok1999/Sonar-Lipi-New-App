@@ -29,9 +29,7 @@ export default function WelcomeScreen() {
         </Text>
         
         <View style={styles.features}>
-          <Text style={styles.featureText}>• Design compositions with traditional grid layout</Text>
-          <Text style={styles.featureText}>• Save compositions as PDF</Text>
-          <Text style={styles.featureText}>• Organize your musical creations</Text>
+          <Text style={styles.featureText}>Created By Shlok Ranjan</Text>
         </View>
         
         <TouchableOpacity 
