@@ -47,5 +47,13 @@ export const TAALS = [
     structure: [4, 4],
     numberOfColumns: 8,
     description: 'An 8-beat taal commonly used in folk and light classical music.',
-  }
+  },
+  {
+    id: 'deepchandi',
+    name: 'Deepchandi Taal',
+    structure: [4, 4, 4, 4, 4],
+    numberOfColumns: 20,
+    description: 'A 20-beat taal divided into 5 parts, often used in Dhrupad compositions.',
+  },
+ 
 ];
