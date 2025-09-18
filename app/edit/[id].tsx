@@ -1,12 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-  const { id } = useLocalSearchParams();
-  const [composition, setComposition] = useState<Composition | null>(null);
-  const [grid, setGrid] = useState<string[][]>([]);
-  const [taalInfo, setTaalInfo] = useState<any>(null);
-  const [showRowActions, setShowRowActions] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<number | null>(null);
-  const [showTaalPicker, setShowTaalPicker] = useState(false);
-  const inputRefs = useRef<Array<Array<TextInput | null>>>([]);
+  
 import {
   View,
   Text,
@@ -44,6 +37,7 @@ interface Composition {
 }
 
 export default function EditCompositionScreen() {
+  const inputRefs = useRef<Array<Array<TextInput | null>>>([]);
   const { id } = useLocalSearchParams();
   const [composition, setComposition] = useState<Composition | null>(null);
   const [grid, setGrid] = useState<string[][]>([]);
@@ -151,7 +145,7 @@ export default function EditCompositionScreen() {
     tableRows += '</tr>';
 
     // Data rows
-    for (let row = 0; row < 12; row++) {
+    for (let row = 0; row < grid.length; row++) {
       tableRows += `<tr><td style="
         background-color: #f9f9f9;
         padding: 12px;
