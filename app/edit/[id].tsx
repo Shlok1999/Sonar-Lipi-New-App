@@ -17,8 +17,9 @@ import { useRouter, useLocalSearchParams } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
-import { ArrowLeft, Save, Download } from 'lucide-react-native';
+import { ArrowLeft, Save, Download, MenuIcon } from 'lucide-react-native';
 import { TAALS } from '@/constants/taals';
+
 
 interface TaalInfo {
   id: string;
@@ -374,6 +375,7 @@ export default function EditCompositionScreen() {
                       }}
                     >
                       <Text style={styles.rowNumberText}>{rowIndex + 1}</Text>
+                      <MenuIcon size={12} color="#2D3436" strokeWidth={1.5} style={{ marginLeft: 4 }} />
                     </TouchableOpacity>
                     {Array.from({ length: taalInfo ? taalInfo.numberOfColumns : 8 }, (_, colIndex) => (
                       <View key={colIndex} style={[styles.gridCell, getBorderStyle(colIndex)]}>
@@ -495,6 +497,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  addButtonText: {
+    fontSize: 5,
+    marginLeft: 4,
+    color: '#000000',
+    fontWeight: 'bold',
+    width: 10,
+    height: 10,
+    textAlign: 'center',
+    borderRadius: 5,
+    backgroundColor: '#4CAF50',
+  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -562,6 +575,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
     paddingHorizontal: 2,
+    flex: 1,
+    flexDirection: 'row',
   },
   headerCell: {
     backgroundColor: '#F5F5F5',
